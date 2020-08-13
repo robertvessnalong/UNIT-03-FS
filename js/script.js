@@ -76,10 +76,7 @@ function tShirtSelect() {
   colorContainer.style.display = "none";
   // Color Select Disabled
   colorSelect.disabled = true;
-  // Set Color Select Inner HTML to an Option that is selected and disabled
-  colorSelect.innerHTML = `
-        <option selected disabled>Please select a T-shirt theme</option>
-    `;
+
   // Design Select Event Handler to Check Which Theme is Selected
   designSelect.addEventListener("change", (e) => {
     const target = e.target.value;
@@ -88,6 +85,7 @@ function tShirtSelect() {
       colorContainer.style.display = "block";
       colorSelect.disabled = false;
       colorSelect.innerHTML = `
+        <option selected disabled>Please select a T-shirt theme</option>
         <option value="cornflowerblue">Cornflower Blue (JS Puns shirt only)</option>
         <option value="darkslategrey">Dark Slate Grey (JS Puns shirt only)</options>
         <option value="gold">Gold (JS Puns shirt only)</option>
@@ -97,6 +95,7 @@ function tShirtSelect() {
       colorContainer.style.display = "block";
       colorSelect.disabled = false;
       colorSelect.innerHTML = `
+        <option selected disabled>Please select a T-shirt theme</option>
         <option value="tomato">Tomato (I &#9829; JS shirt only)</option>
         <option value="steelblue">Steel Blue (I &#9829; JS shirt only)</option>
         <option value="dimgrey">Dim Grey (I &#9829; JS shirt only)</option>   
