@@ -85,7 +85,7 @@ function tShirtSelect() {
       colorContainer.style.display = "block";
       colorSelect.disabled = false;
       colorSelect.innerHTML = `
-        <option selected disabled>Please select a T-shirt theme</option>
+        <option selected disabled>Please select a T-Shirt theme</option>
         <option value="cornflowerblue">Cornflower Blue (JS Puns shirt only)</option>
         <option value="darkslategrey">Dark Slate Grey (JS Puns shirt only)</options>
         <option value="gold">Gold (JS Puns shirt only)</option>
@@ -95,7 +95,7 @@ function tShirtSelect() {
       colorContainer.style.display = "block";
       colorSelect.disabled = false;
       colorSelect.innerHTML = `
-        <option selected disabled>Please select a T-shirt theme</option>
+        <option selected disabled>Please select a T-Shirt theme</option>
         <option value="tomato">Tomato (I &#9829; JS shirt only)</option>
         <option value="steelblue">Steel Blue (I &#9829; JS shirt only)</option>
         <option value="dimgrey">Dim Grey (I &#9829; JS shirt only)</option>   
