@@ -15,6 +15,8 @@ const activitiesLegend = document.querySelector(".activities legend");
 const paymentSelection = document.querySelector("#payment");
 //Grab Credit Card Div
 const creditCard = document.querySelector("#credit-card");
+//Grab Credit Card Option
+const creditCardOption = document.querySelector('option[value="credit card"]');
 //Grab Label to Prepend Error
 const nameLabel = document.querySelector('label[for="name"]');
 const emailLabel = document.querySelector('label[for="mail"]');
@@ -182,6 +184,8 @@ function paymentSection() {
   const bitcoin = document.querySelector("#bitcoin");
   //Grab First Option
   const selectMethod = document.querySelector('option[value="select method"]');
+  //Set Credit Card as Selected Option
+  creditCardOption.setAttribute("selected", true);
   //Set Paypal and Bitcoin to display none
   paypal.style.display = "none";
   bitcoin.style.display = "none";
@@ -192,16 +196,22 @@ function paymentSection() {
     const target = e.target;
     //if Credit Card
     if (target.value === "credit card") {
+      //Add Selected Attr
+      creditCardOption.setAttribute("selected", true);
       creditCard.style.display = "block";
       paypal.style.display = "none";
       bitcoin.style.display = "none";
       //if paypal
     } else if (target.value === "paypal") {
+      //Remove Selected Attr
+      creditCardOption.removeAttribute("selected");
       creditCard.style.display = "none";
       paypal.style.display = "block";
       bitcoin.style.display = "none";
       //if bitcoin
     } else if (target.value === "bitcoin") {
+      //Remove Selected Attr
+      creditCardOption.removeAttribute("selected");
       creditCard.style.display = "none";
       paypal.style.display = "none";
       bitcoin.style.display = "block";
@@ -312,8 +322,8 @@ function creditVal() {
   const creditRegex = /^[0-9]{13,16}$/g;
   //Test Regex against CC Value
   const matchCredit = creditRegex.test(creditCardValue);
-  //Check to see if credit card field is block
-  if (creditCard.style.display === "block") {
+  //Check to see if credit card field is selected
+  if (creditCardOption.hasAttribute("selected")) {
     //Check to see if CC Value is true
     if (matchCredit) {
       //Set Label Color
@@ -326,8 +336,8 @@ function creditVal() {
       creditError.style.display = "none";
       return true;
     }
-    //If CC Value is none, return true to stop function
-  } else if (creditCard.style.display === "none") {
+    //If not selected, return true to stop function
+  } else if (!creditCardOption.hasAttribute("selected")) {
     return true;
   }
   //if CC value equals empty string
@@ -370,16 +380,16 @@ function zipVal() {
   const zipRegex = /^\d{5}$/g;
   //Test Zip Regex against Zip Value
   const matchZip = zipRegex.test(zipCodeValue);
-  //if Credit Card is display block
-  if (creditCard.style.display === "block") {
+  //if Credit Card is selected
+  if (creditCardOption.hasAttribute("selected")) {
     //Check if matchZip returns true
     if (matchZip) {
       zipCode.previousElementSibling.style.color = "";
       zipCode.style.borderColor = "";
       return true;
     }
-    //If Credit Card container is display none, return true to stop function
-  } else if (creditCard.style.display === "none") {
+    //If Credit Card container is not selected, return true to stop function
+  } else if (!creditCardOption.hasAttribute("selected")) {
     return true;
   }
   //If matchZip returns false
@@ -403,16 +413,16 @@ function cvvField() {
   const cvvRegex = /^\d{3}$/g;
   //CVV Test To Input Value
   const matchCvv = cvvRegex.test(cvvValue);
-  //If Credit Card is Block
-  if (creditCard.style.display === "block") {
+  //If Credit Card is Selected
+  if (creditCardOption.hasAttribute("selected")) {
     //Check if user has provided CVV that match Regex
     if (matchCvv) {
       cvvField.style.borderColor = "";
       cvvField.previousElementSibling.style.color = "";
       return true;
     }
-    //If Credit Card is display none
-  } else if (creditCard.style.display === "none") {
+    //If Credit Card is not selected
+  } else if (!creditCardOption.hasAttribute("selected")) {
     //Return True, this prevents code running with other payment selection
     return true;
   }
